@@ -1,0 +1,15 @@
+[[source]]
+name = "douban"
+url = "https://pypi.doubanio.com/simple"
+verify_ssl = true
+
+[dev-packages]
+yapf = "*"
+pylint = "*"
+
+[packages]
+scrapy = "*"
+pymongo = "*"
+
+[requires]
+python_version = "3.7"

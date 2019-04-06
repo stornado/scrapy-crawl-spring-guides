@@ -21,8 +21,7 @@ class MongoPipeline(object):
     def from_crawler(cls, crawler):
         return cls(
             mongo_uri=crawler.settings.get('MONGO_URI'),
-            mongo_db=crawler.settings.get('MONGO_DATABASE', 'items')
-        )
+            mongo_db=crawler.settings.get('MONGO_DATABASE', 'items'))
 
     def open_spider(self, spider):
         self.client = pymongo.MongoClient(self.mongo_uri)
@@ -37,7 +36,6 @@ class MongoPipeline(object):
 
 
 class JsonWriterPipeline(object):
-
     def open_spider(self, spider):
         self.file = open('spring-guides.jl', 'w')
 
@@ -45,7 +43,6 @@ class JsonWriterPipeline(object):
         self.file.close()
 
     def process_item(self, item, spider):
-        item.description = pprint(item.description)
         line = json.dumps(dict(item)) + "\n"
         self.file.write(line)
         return item
